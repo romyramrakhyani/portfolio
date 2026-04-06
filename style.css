@@ -1,15 +1,95 @@
+/* --- GLOBAL STYLES (Step 1) --- */
 body {
-  /* Keep your existing font and line-height */
   font: 100%/1.5 system-ui;
-
-  /* STEP 1: Prevent content from getting too wide */
   max-width: 100ch; 
-  
-  /* Center the content horizontally */
-  margin-inline: auto;
-
-  /* Add padding so text doesn't touch the edges on mobile/small screens */
   padding: 1rem;
-
+  /* Pro-tip: This math handles centering AND mobile padding in one line */
   margin-inline: max(1rem, (100% - 100ch) / 2); 
+}
+
+/* --- NAVIGATION (Step 2) --- */
+:root {
+  --color-accent: oklch(65% 50% 0); /* Your brand color */
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
+nav {
+  display: flex;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+nav ul, nav li {
+  display: contents; /* Allows <a> tags to be direct flex children */
+}
+
+nav a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.1em;
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+/* --- CONTACT FORM (Step 3) --- */
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+form label {
+  display: contents;
+}
+
+form input, form textarea, form button {
+  font: inherit;
+  padding: 0.5em;
+}
+
+form button {
+  grid-column: 1 / -1;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* --- PROJECTS GRID (Step 4) --- */
+.projects {
+  display: grid;
+  /* This creates the 'Responsive' part: 
+     it wraps columns automatically as the screen shrinks */
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1em;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid; /* Step 4.3: Aligns items inside the cards */
+  grid-row: span 3;
+  gap: 0.5em;
+  border: 1px solid oklch(90% 0% 0);
+  padding: 1em;
+  border-radius: 8px;
+}
+
+/* --- CV STYLING (Step 5) --- */
+h2 {
+  border-bottom: 2px solid var(--color-accent);
+  margin-top: 2rem;
 }

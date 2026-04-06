@@ -1,25 +1,40 @@
-<link rel="stylesheet" href="../style.css">
-<nav>
-    <a href="../index.html">Home</a>
-    <a href="../projects/index.html">Projects</a>
-    <a href="../contact/index.html">Contact</a>
-    <a href="https://github.com/romyramrakhyani" target="_blank">GitHub</a>
-</nav>
-<form action="mailto:rramrakhyani@ucsd.edu" method="POST" enctype="text/plain">
-    <label>
-        Your Email:
-        <input type="email" name="email" required>
-    </label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Romy Ramrakhyani</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects/index.html">Projects</a></li>
+            <li><a href="../contact/index.html" class="current">Contact</a></li>
+            <li><a href="https://github.com/romyramrakhyani" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
 
-    <label>
-        Subject:
-        <input name="subject">
-    </label>
+    <h1>Contact Me</h1>
 
-    <label>
-        Message:
-        <textarea name="body"></textarea>
-    </label>
+    <form action="mailto:rramrakhyani@ucsd.edu" method="POST" enctype="text/plain">
+        <label>
+            Email:
+            <input type="email" name="email" required>
+        </label>
 
-    <button>Send Message</button>
-</form>
+        <label>
+            Subject:
+            <input name="subject">
+        </label>
+
+        <label>
+            Message:
+            <textarea name="body"></textarea>
+        </label>
+
+        <button type="submit">Send Message</button>
+    </form>
+</body>
+</html>
