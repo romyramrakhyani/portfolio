@@ -1,29 +1,35 @@
-/* --- GLOBAL STYLES (Step 1) --- */
+/* --- STEP 1: GLOBAL LAYOUT --- */
 body {
-  font: 100%/1.5 system-ui;
+  /* Clean system font and readable line height */
+  font: 100%/1.5 system-ui, sans-serif;
+  
+  /* Prevent content from getting too wide (Step 1) */
   max-width: 100ch; 
+  
+  /* Centering + Mobile padding safety (Step 1.1) */
+  margin-inline: max(1rem, (100% - 100ch) / 2);
   padding: 1rem;
-  /* Pro-tip: This math handles centering AND mobile padding in one line */
-  margin-inline: max(1rem, (100% - 100ch) / 2); 
+  color: #222;
 }
 
-/* --- NAVIGATION (Step 2) --- */
+/* --- STEP 2: NAVIGATION & THEME --- */
 :root {
-  --color-accent: oklch(65% 50% 0); /* Your brand color */
-}
-
-html {
-  accent-color: var(--color-accent);
+  /* Your custom blueish accent color */
+  --color-accent: #0062cc; 
+  /* A very light version of that blue for the hover background */
+  --color-accent-bg: #e7f1ff;
+  /* The gray for the 'current' page indicator */
+  --color-border-gray: #bdc3c7;
 }
 
 nav {
   display: flex;
   margin-bottom: 2rem;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid #d1d5db; /* Subtle full-width line */
 }
 
 nav ul, nav li {
-  display: contents; /* Allows <a> tags to be direct flex children */
+  display: contents; /* Removes list styling so flex works on <a> tags */
 }
 
 nav a {
@@ -31,65 +37,93 @@ nav a {
   text-decoration: none;
   color: inherit;
   text-align: center;
-  padding: 0.5em;
+  padding: 0.8em;
+  font-weight: bold;
+  
+  /* Reserve space for the thick border so the text doesn't jump */
+  border-bottom: 0.4em solid transparent;
+  transition: all 0.2s ease-in-out;
 }
 
+/* Style for the page the user is currently on */
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
-  padding-bottom: 0.1em;
+  border-bottom-color: var(--color-border-gray);
 }
 
+/* Hover effect: Blue bar and light blue background */
 nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  border-bottom-color: var(--color-accent);
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent);
 }
 
-/* --- CONTACT FORM (Step 3) --- */
+/* --- STEP 3: CONTACT FORM --- */
 form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1em;
+  margin-top: 2rem;
 }
 
 form label {
-  display: contents;
+  display: contents; /* Aligns label text and input in the grid */
 }
 
 form input, form textarea, form button {
   font: inherit;
   padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 form button {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1; /* Spans full width */
   background-color: var(--color-accent);
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
+  padding: 0.8em;
+  font-weight: bold;
 }
 
-/* --- PROJECTS GRID (Step 4) --- */
+form button:hover {
+  filter: brightness(1.2); /* Makes button slightly lighter on hover */
+}
+
+/* --- STEP 4: PROJECTS GRID --- */
 .projects {
   display: grid;
-  /* This creates the 'Responsive' part: 
-     it wraps columns automatically as the screen shrinks */
+  /* Responsive: adjusts columns based on screen width */
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 1em;
+  gap: 1.5em;
+  margin-top: 2rem;
 }
 
 .projects article {
   display: grid;
-  grid-template-rows: subgrid; /* Step 4.3: Aligns items inside the cards */
+  grid-template-rows: subgrid; /* Aligns titles/text across cards (Step 4.3) */
   grid-row: span 3;
   gap: 0.5em;
-  border: 1px solid oklch(90% 0% 0);
-  padding: 1em;
+  padding: 1rem;
+  border: 1px solid #eee;
   border-radius: 8px;
+  background: #f9f9f9;
 }
 
-/* --- CV STYLING (Step 5) --- */
+/* --- STEP 5: CV/RESUME POLISH --- */
+h1 {
+  font-size: 2.5rem;
+  margin-top: 0;
+}
+
 h2 {
   border-bottom: 2px solid var(--color-accent);
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
