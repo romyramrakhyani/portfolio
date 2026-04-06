@@ -1,129 +1,120 @@
-/* --- STEP 1: GLOBAL LAYOUT --- */
+/* --- STEP 1: GLOBAL LAYOUT & TYPOGRAPHY --- */
+:root {
+  --color-accent: #0062cc; /* Blueish accent */
+  --color-accent-bg: oklch(from var(--color-accent) 95% 5% h);
+  --color-border-gray: #bdc3c7;
+}
+
 body {
-  /* Clean system font and readable line height */
   font: 100%/1.5 system-ui, sans-serif;
-  
-  /* Prevent content from getting too wide (Step 1) */
   max-width: 100ch; 
-  
-  /* Centering + Mobile padding safety (Step 1.1) */
   margin-inline: max(1rem, (100% - 100ch) / 2);
   padding: 1rem;
   color: #222;
 }
 
-/* --- STEP 2: NAVIGATION & THEME --- */
-:root {
-  /* Your custom blueish accent color */
-  --color-accent: #0062cc; 
-  /* A very light version of that blue for the hover background */
-  --color-accent-bg: #e7f1ff;
-  /* The gray for the 'current' page indicator */
-  --color-border-gray: #bdc3c7;
+/* Step 4.4: Heading Defaults */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 0.5rem;
 }
 
+h1 {
+  font-size: 400%; /* High contrast (Step 4.4) */
+}
+
+/* --- STEP 2: NAVIGATION (The "Lea Verou" Look) --- */
 nav {
   display: flex;
   margin-bottom: 2rem;
-  border-bottom: 1px solid #d1d5db; /* Subtle full-width line */
+  border-bottom: 1px solid #d1d5db;
 }
 
 nav ul, nav li {
-  display: contents; /* Removes list styling so flex works on <a> tags */
+  display: contents; /* Step 2.1 */
 }
 
 nav a {
-  flex: 1;
+  flex: 1; /* Step 2.2 */
   text-decoration: none;
   color: inherit;
   text-align: center;
   padding: 0.8em;
   font-weight: bold;
-  
-  /* Reserve space for the thick border so the text doesn't jump */
   border-bottom: 0.4em solid transparent;
   transition: all 0.2s ease-in-out;
 }
 
-/* Style for the page the user is currently on */
 nav a.current {
-  border-bottom-color: var(--color-border-gray);
+  border-bottom-color: var(--color-border-gray); /* Step 2.3 */
 }
 
-/* Hover effect: Blue bar and light blue background */
 nav a:hover {
-  border-bottom-color: var(--color-accent);
+  border-bottom-color: var(--color-accent); /* Step 2.4 */
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
 }
 
-/* --- STEP 3: CONTACT FORM --- */
+/* --- STEP 3: CONTACT FORM (Grid) --- */
 form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1em;
-  margin-top: 2rem;
+  max-width: 600px;
 }
 
 form label {
-  display: contents; /* Aligns label text and input in the grid */
+  display: contents; /* Step 3.3 */
 }
 
 form input, form textarea, form button {
-  font: inherit;
+  font: inherit; /* Step 3.1 */
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 form button {
-  grid-column: 1 / -1; /* Spans full width */
+  grid-column: 1 / -1;
   background-color: var(--color-accent);
   color: white;
   border: none;
   cursor: pointer;
   padding: 0.8em;
-  font-weight: bold;
 }
 
-form button:hover {
-  filter: brightness(1.2); /* Makes button slightly lighter on hover */
-}
-
-/* --- STEP 4: PROJECTS GRID --- */
+/* --- STEP 4: PROJECTS GRID (Subgrid) --- */
 .projects {
   display: grid;
-  /* Responsive: adjusts columns based on screen width */
+  /* Responsive columns (Step 4.2) */
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1.5em;
-  margin-top: 2rem;
 }
 
 .projects article {
   display: grid;
-  grid-template-rows: subgrid; /* Aligns titles/text across cards (Step 4.3) */
+  grid-template-rows: subgrid; /* Step 4.3 */
   grid-row: span 3;
   gap: 0.5em;
   padding: 1rem;
   border: 1px solid #eee;
   border-radius: 8px;
-  background: #f9f9f9;
 }
 
-/* --- STEP 5: CV/RESUME POLISH --- */
-h1 {
-  font-size: 2.5rem;
-  margin-top: 0;
+.projects h2 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-h2 {
-  border-bottom: 2px solid var(--color-accent);
-  margin-top: 2.5rem;
-  color: var(--color-accent);
-}
-
-img {
-  max-width: 100%;
+.projects img {
+  width: 100%;
   height: auto;
-  border-radius: 8px;
+}
+
+/* --- STEP 5: CV/RESUME --- */
+section h2 {
+  border-bottom: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  margin-top: 2rem;
 }
