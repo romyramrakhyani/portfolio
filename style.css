@@ -18,13 +18,20 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
   margin-bottom: 0.5rem;
+  margin-top: 0; /* Reset margins for better control */
 }
 
 h1 {
-  font-size: 400%; /* High contrast (Step 4.4) */
+  /* Adjusted from 400% to 300% for better visual balance on Contact/Projects */
+  font-size: 300%; 
 }
 
-/* --- STEP 2: NAVIGATION (The "Lea Verou" Look) --- */
+h2 {
+  font-size: 1.75rem; /* Standard size for Resume/CV sections */
+  margin-top: 2rem;
+}
+
+/* --- STEP 2: NAVIGATION --- */
 nav {
   display: flex;
   margin-bottom: 2rem;
@@ -32,11 +39,11 @@ nav {
 }
 
 nav ul, nav li {
-  display: contents; /* Step 2.1 */
+  display: contents; 
 }
 
 nav a {
-  flex: 1; /* Step 2.2 */
+  flex: 1; 
   text-decoration: none;
   color: inherit;
   text-align: center;
@@ -47,16 +54,16 @@ nav a {
 }
 
 nav a.current {
-  border-bottom-color: var(--color-border-gray); /* Step 2.3 */
+  border-bottom-color: var(--color-border-gray); 
 }
 
 nav a:hover {
-  border-bottom-color: var(--color-accent); /* Step 2.4 */
+  border-bottom-color: var(--color-accent); 
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
 }
 
-/* --- STEP 3: CONTACT FORM (Grid) --- */
+/* --- STEP 3: CONTACT FORM --- */
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -65,11 +72,11 @@ form {
 }
 
 form label {
-  display: contents; /* Step 3.3 */
+  display: contents; 
 }
 
 form input, form textarea, form button {
-  font: inherit; /* Step 3.1 */
+  font: inherit; 
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -82,19 +89,19 @@ form button {
   border: none;
   cursor: pointer;
   padding: 0.8em;
+  font-weight: bold;
 }
 
-/* --- STEP 4: PROJECTS GRID (Subgrid) --- */
+/* --- STEP 4: PROJECTS GRID --- */
 .projects {
   display: grid;
-  /* Responsive columns (Step 4.2) */
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1.5em;
 }
 
 .projects article {
   display: grid;
-  grid-template-rows: subgrid; /* Step 4.3 */
+  grid-template-rows: subgrid; 
   grid-row: span 3;
   gap: 0.5em;
   padding: 1rem;
@@ -102,9 +109,10 @@ form button {
   border-radius: 8px;
 }
 
+/* Subgrid Titles: Ensure project card titles aren't too massive */
 .projects h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem; 
 }
 
 .projects img {
@@ -116,5 +124,12 @@ form button {
 section h2 {
   border-bottom: 2px solid var(--color-accent);
   color: var(--color-accent);
-  margin-top: 2rem;
+  padding-bottom: 0.2rem;
+}
+
+/* Small visual fix for nested Resume headers */
+article h3 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
 }
