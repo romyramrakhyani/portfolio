@@ -1,6 +1,15 @@
 body {
-  /* Set line height to 1.5 times the font size
-     and use the OS’s UI font as the website font
-   */
+  /* Keep your existing font and line-height */
   font: 100%/1.5 system-ui;
+
+  /* STEP 1: Prevent content from getting too wide */
+  max-width: 100ch; 
+  
+  /* Center the content horizontally */
+  margin-inline: auto;
+
+  /* Add padding so text doesn't touch the edges on mobile/small screens */
+  padding: 1rem;
+
+  margin-inline: max(1rem, (100% - 100ch) / 2); 
 }
