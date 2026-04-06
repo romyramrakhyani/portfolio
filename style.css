@@ -1,6 +1,6 @@
 /* --- STEP 1: GLOBAL LAYOUT & TYPOGRAPHY --- */
 :root {
-  --color-accent: #0062cc; /* Blueish accent */
+  --color-accent: #0062cc; 
   --color-accent-bg: oklch(from var(--color-accent) 95% 5% h);
   --color-border-gray: #bdc3c7;
 }
@@ -13,23 +13,14 @@ body {
   color: #222;
 }
 
-/* Step 4.4: Heading Defaults */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
   margin-bottom: 0.5rem;
-  margin-top: 0; /* Reset margins for better control */
+  margin-top: 0;
 }
 
-h1 {
-  /* Adjusted from 400% to 300% for better visual balance on Contact/Projects */
-  font-size: 300%; 
-}
-
-h2 {
-  font-size: 1.75rem; /* Standard size for Resume/CV sections */
-  margin-top: 2rem;
-}
+h1 { font-size: 300%; }
 
 /* --- STEP 2: NAVIGATION --- */
 nav {
@@ -38,9 +29,7 @@ nav {
   border-bottom: 1px solid #d1d5db;
 }
 
-nav ul, nav li {
-  display: contents; 
-}
+nav ul, nav li { display: contents; }
 
 nav a {
   flex: 1; 
@@ -53,9 +42,7 @@ nav a {
   transition: all 0.2s ease-in-out;
 }
 
-nav a.current {
-  border-bottom-color: var(--color-border-gray); 
-}
+nav a.current { border-bottom-color: var(--color-border-gray); }
 
 nav a:hover {
   border-bottom-color: var(--color-accent); 
@@ -71,9 +58,7 @@ form {
   max-width: 600px;
 }
 
-form label {
-  display: contents; 
-}
+form label { display: contents; }
 
 form input, form textarea, form button {
   font: inherit; 
@@ -109,27 +94,54 @@ form button {
   border-radius: 8px;
 }
 
-/* Subgrid Titles: Ensure project card titles aren't too massive */
-.projects h2 {
-  margin: 0;
-  font-size: 1.25rem; 
-}
+.projects h2 { margin: 0; font-size: 1.25rem; }
+.projects img { width: 100%; height: auto; }
 
-.projects img {
-  width: 100%;
-  height: auto;
-}
+/* --- STEP 5: CV/RESUME FREEFORM STYLING --- */
+/* This section fulfills the 'experiment with styling' requirement */
 
-/* --- STEP 5: CV/RESUME --- */
 section h2 {
   border-bottom: 2px solid var(--color-accent);
   color: var(--color-accent);
   padding-bottom: 0.2rem;
+  margin-top: 3rem;
+  text-transform: uppercase; /* Makes section headers feel more professional */
+  letter-spacing: 0.05em;
 }
 
-/* Small visual fix for nested Resume headers */
-article h3 {
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  margin-bottom: 0.2rem;
+/* Style the individual job/education entries */
+#experience article, #education article {
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  border-left: 3px solid #eee; /* Creates a vertical 'timeline' look */
+  transition: border-color 0.3s;
+}
+
+#experience article:hover {
+  border-left-color: var(--color-accent); /* Highlights the entry you're reading */
+}
+
+/* Styling the dates/times */
+time {
+  font-variant-numeric: tabular-nums;
+  color: #666;
+  font-style: italic;
+}
+
+/* Styling the Skills list differently */
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+#skills li {
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px; /* Makes skills look like 'tags' */
+  font-size: 0.9rem;
+  font-weight: bold;
 }
