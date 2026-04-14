@@ -1,3 +1,14 @@
+/* At the very top of style.css */
+html {
+  color-scheme: light dark;
+}
+
+/* Update your nav or border styles */
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom: 1px solid var(--border-color);
+}
+
 /* --- STEP 1: GLOBAL LAYOUT & TYPOGRAPHY --- */
 :root {
   --color-accent: #0062cc; 
@@ -144,4 +155,18 @@ time {
   border-radius: 20px; /* Makes skills look like 'tags' */
   font-size: 0.9rem;
   font-weight: bold;
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+}
+
+/* Ensure the select inherits the font too */
+.color-scheme select {
+  font-family: inherit;
+  font-size: inherit;
 }

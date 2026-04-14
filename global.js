@@ -65,3 +65,36 @@ for (let p of pages) {
 
     nav.append(a);
 }
+// Step 4.2: Add the HTML for the switcher
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+  <label class="color-scheme">
+    Theme:
+    <select id="scheme-selector">
+      <option value="light dark">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>`
+);
+
+// Step 4.3 & 4.4: Select the element and make it work
+const select = document.querySelector('#scheme-selector');
+
+// Function to set the scheme and save it
+function setColorScheme(scheme) {
+  document.documentElement.style.setProperty('color-scheme', scheme);
+  select.value = scheme; // Keep the dropdown in sync
+  localStorage.colorScheme = scheme; // Step 4.5: Save to local storage
+}
+
+// Event listener for user changes
+select.addEventListener('input', function (event) {
+  setColorScheme(event.target.value);
+});
+
+// Step 4.5: On page load, check if a preference was saved
+if ("colorScheme" in localStorage) {
+  setColorScheme(localStorage.colorScheme);
+}
