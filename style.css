@@ -1,27 +1,27 @@
-/* At the very top of style.css */
+/* --- STEP 0: THEME SETUP --- */
 html {
   color-scheme: light dark;
 }
 
-/* Update your nav or border styles */
-nav {
+/* Variables that adapt to the mode */
+:root {
+  --color-accent: #0062cc; 
+  /* Use color-mix to make the accent background adapt to the system background */
+  --color-accent-bg: color-mix(in oklch, var(--color-accent), canvas 85%);
+  --color-border-gray: #bdc3c7;
   --border-color: oklch(50% 10% 200 / 40%);
-  border-bottom: 1px solid var(--border-color);
 }
 
 /* --- STEP 1: GLOBAL LAYOUT & TYPOGRAPHY --- */
-:root {
-  --color-accent: #0062cc; 
-  --color-accent-bg: oklch(from var(--color-accent) 95% 5% h);
-  --color-border-gray: #bdc3c7;
-}
-
 body {
   font: 100%/1.5 system-ui, sans-serif;
   max-width: 100ch; 
   margin-inline: max(1rem, (100% - 100ch) / 2);
   padding: 1rem;
-  color: #222;
+  
+  /* FIXED: Using system colors so text/bg flip automatically */
+  color: canvastext;
+  background-color: canvas;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   margin-bottom: 0.5rem;
   margin-top: 0;
+  color: inherit; /* Ensures headers stay visible */
 }
 
 h1 { font-size: 300%; }
@@ -37,7 +38,8 @@ h1 { font-size: 300%; }
 nav {
   display: flex;
   margin-bottom: 2rem;
-  border-bottom: 1px solid #d1d5db;
+  /* FIXED: Using the variable we defined for dark mode clarity */
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav ul, nav li { display: contents; }
@@ -71,17 +73,20 @@ form {
 
 form label { display: contents; }
 
-form input, form textarea, form button {
+form input, form textarea, form button, form select {
   font: inherit; 
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
+  /* Ensures inputs look right in dark mode */
+  background: canvas;
+  color: canvastext;
 }
 
 form button {
   grid-column: 1 / -1;
   background-color: var(--color-accent);
-  color: white;
+  color: white; /* Button text stays white for contrast */
   border: none;
   cursor: pointer;
   padding: 0.8em;
@@ -101,45 +106,41 @@ form button {
   grid-row: span 3;
   gap: 0.5em;
   padding: 1rem;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color); /* Updated for dark mode */
   border-radius: 8px;
 }
 
 .projects h2 { margin: 0; font-size: 1.25rem; }
 .projects img { width: 100%; height: auto; }
 
-/* --- STEP 5: CV/RESUME FREEFORM STYLING --- */
-/* This section fulfills the 'experiment with styling' requirement */
-
+/* --- STEP 5: CV/RESUME --- */
 section h2 {
   border-bottom: 2px solid var(--color-accent);
   color: var(--color-accent);
   padding-bottom: 0.2rem;
   margin-top: 3rem;
-  text-transform: uppercase; /* Makes section headers feel more professional */
+  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-/* Style the individual job/education entries */
 #experience article, #education article {
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 3px solid #eee; /* Creates a vertical 'timeline' look */
+  border-left: 3px solid var(--border-color); /* Updated */
   transition: border-color 0.3s;
 }
 
 #experience article:hover {
-  border-left-color: var(--color-accent); /* Highlights the entry you're reading */
+  border-left-color: var(--color-accent);
 }
 
-/* Styling the dates/times */
 time {
   font-variant-numeric: tabular-nums;
-  color: #666;
+  /* Use a relative color so it doesn't vanish in dark mode */
+  color: color-mix(in oklch, canvastext, transparent 40%);
   font-style: italic;
 }
 
-/* Styling the Skills list differently */
 #skills ul {
   display: flex;
   flex-wrap: wrap;
@@ -152,20 +153,19 @@ time {
   background: var(--color-accent-bg);
   color: var(--color-accent);
   padding: 0.2rem 0.8rem;
-  border-radius: 20px; /* Makes skills look like 'tags' */
+  border-radius: 20px;
   font-size: 0.9rem;
   font-weight: bold;
 }
 
+/* --- DARK MODE SWITCHER --- */
 .color-scheme {
   position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 80%;
-  font-family: inherit;
 }
 
-/* Ensure the select inherits the font too */
 .color-scheme select {
   font-family: inherit;
   font-size: inherit;
