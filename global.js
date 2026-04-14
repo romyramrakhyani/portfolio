@@ -98,3 +98,32 @@ select.addEventListener('input', function (event) {
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 }
+
+// Step 5: Better contact form logic
+const form = document.querySelector('form');
+
+form?.addEventListener('submit', function (event) {
+    // Stop the browser from doing its default "messy" submission
+    event.preventDefault();
+
+    // Create a FormData object to easily grab input values
+    let data = new FormData(form);
+    
+    // Start building the URL with the mailto: address from the form's action
+    let url = form.action + '?';
+
+    // Array to hold our encoded parameters
+    let params = [];
+
+    // Iterate over form fields (name corresponds to input 'name' attribute)
+    for (let [name, value] of data) {
+        // Encode the value to handle spaces/special characters correctly
+        params.push(`${name}=${encodeURIComponent(value)}`);
+    }
+
+    // Join all params with '&' and append to the URL
+    url += params.join('&');
+
+    // "Navigate" to the mailto URL to open the user's email client
+    location.href = url;
+});
