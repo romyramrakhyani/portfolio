@@ -1,62 +1,26 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "title": "The Sugar Trap: Yogurt vs. Candy",
+        "image": "images/sugar-viz.png",
+        "description": "A data visualization project using Python and Seaborn to expose high sugar content in 'healthy' yogurt drinks compared to traditional candy.",
+        "year": 2024
     },
     {
-        "title": "Amet consectetur adipiscing elit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "title": "The Cost of Convenience",
+        "image": "images/price-analysis.png",
+        "description": "An economic analysis of grocery data showing the price-per-calorie disparity between unprocessed and ultra-processed foods.",
+        "year": 2024
     },
     {
-        "title": "Sed do eiusmod tempor.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        "title": "Personal Portfolio Website",
+        "image": "images/colorado.png",
+        "description": "A responsive website built with semantic HTML, CSS, and modular JavaScript to showcase data science projects and personal milestones.",
+        "year": 2024
     },
     {
-        "title": "Incididunt ut labore et.",
+        "title": "Data Science Research",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-    {
-        "title": "Dolore magna aliqua enim.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque."
-    },
-    {
-        "title": "Ad minim veniam quis.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat."
-    },
-    {
-        "title": "Nostrud exercitation ullamco laboris.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates."
-    },
-    {
-        "title": "Nisi ut aliquip ex.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur."
-    },
-    {
-        "title": "Ea commodo consequat duis.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi."
-    },
-    {
-        "title": "Aute irure dolor in.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt."
-    },
-    {
-        "title": "Reprehenderit in voluptate velit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur."
-    },
-    {
-        "title": "Esse cillum dolore eu.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea."
+        "description": "Ongoing research into local environmental data in the Colorado Rockies area.",
+        "year": 2023
     }
 ]
