@@ -170,3 +170,23 @@ time {
   font-family: inherit;
   font-size: inherit;
 }
+#profile-stats dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#profile-stats dt {
+    grid-row: 1; /* Labels on Row 1 */
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+#profile-stats dd {
+    grid-row: 2; /* Numbers on Row 2 */
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
