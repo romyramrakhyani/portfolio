@@ -1,26 +1,74 @@
 [
-    {
-        "title": "The Sugar Trap: Yogurt vs. Candy",
-        "image": "images/sugar-viz.png",
-        "description": "A data visualization project using Python and Seaborn to expose high sugar content in 'healthy' yogurt drinks compared to traditional candy.",
-        "year": 2024
-    },
-    {
-        "title": "The Cost of Convenience",
-        "image": "images/price-analysis.png",
-        "description": "An economic analysis of grocery data showing the price-per-calorie disparity between unprocessed and ultra-processed foods.",
-        "year": 2024
-    },
-    {
-        "title": "Personal Portfolio Website",
-        "image": "images/colorado.png",
-        "description": "A responsive website built with semantic HTML, CSS, and modular JavaScript to showcase data science projects and personal milestones.",
-        "year": 2024
-    },
-    {
-        "title": "Data Science Research",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ongoing research into local environmental data in the Colorado Rockies area.",
-        "year": 2023
-    }
+  {
+    "title": "The Sugar Trap: Yogurt vs. Candy",
+    "year": 2024,
+    "image": "images/sugar-viz.png",
+    "description": "An exploratory data visualization using Python to compare sugar content in popular snack foods."
+  },
+  {
+    "title": "Personal Portfolio Website",
+    "year": 2024,
+    "image": "images/colorado.png",
+    "description": "Building a modular, data-driven portfolio using HTML, CSS, and asynchronous JavaScript."
+  },
+  {
+    "title": "Grocery Price Analysis",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A statistical analysis of inflation trends in local Colorado grocery stores."
+  },
+  {
+    "title": "Lab 1: Exploratory Data Analysis",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Initial data cleaning and visualization exercises using Jupyter Notebooks."
+  },
+  {
+    "title": "Climate Trends in the Rockies",
+    "year": 2022,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Visualizing snowfall patterns in the Maroon Bells area over the last decade."
+  },
+  {
+    "title": "Intro to Data Science Final",
+    "year": 2022,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "A predictive model analyzing student success rates based on study habits."
+  },
+  {
+    "title": "Placeholder Project 7",
+    "year": 2021,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda."
+  },
+  {
+    "title": "Placeholder Project 8",
+    "year": 2021,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda."
+  },
+  {
+    "title": "Placeholder Project 9",
+    "year": 2020,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda."
+  },
+  {
+    "title": "Placeholder Project 10",
+    "year": 2020,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda."
+  },
+  {
+    "title": "Placeholder Project 11",
+    "year": 2019,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda."
+  },
+  {
+    "title": "Placeholder Project 12",
+    "year": 2019,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda."
+  }
 ]
