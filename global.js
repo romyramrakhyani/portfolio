@@ -127,3 +127,40 @@ form?.addEventListener('submit', function (event) {
     // "Navigate" to the mailto URL to open the user's email client
     location.href = url;
 });
+// Step 1.2: Fetching the Data
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+// Step 1.4: Rendering the Projects
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    // 1. Clear existing content
+    containerElement.innerHTML = '';
+
+    // 2. Loop through each project in the array
+    projects.forEach(project => {
+        const article = document.createElement('article');
+        
+        // 3. Construct HTML dynamically using the chosen heading level
+        article.innerHTML = `
+            <${headingLevel}>${project.title}</${headingLevel}>
+            <img src="${project.image}" alt="${project.title}">
+            <p>${project.description}</p>
+        `;
+        
+        containerElement.appendChild(article);
+    });
+}
