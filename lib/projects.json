@@ -1,15 +1,15 @@
 [
-  {
+{
     "title": "The Sugar Trap: Yogurt vs. Candy",
-    "year": "2024",
-    "image": "../images/sugartrap.png",
-    "description": "An exploratory data visualization using Python to compare sugar content in popular snack foods."
+    "year": 2024,
+    "image": "images/sugartrap.png", 
+    "description": "An exploratory data visualization using Python to compare sugar content."
   },
   {
     "title": "Personal Portfolio Website",
-    "year": "2024",
-    "image": "../images/personalwebsite.png",
-    "description": "Building a modular, data-driven portfolio using HTML, CSS, and asynchronous JavaScript."
+    "year": 2024,
+    "image": "images/personalwebsite.png",
+    "description": "Building a modular, data-driven portfolio using HTML and CSS."
   },
   {
     "title": "Grocery Price Analysis",
