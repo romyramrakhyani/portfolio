@@ -30,32 +30,67 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-size: 300%; }
 
-/* --- STEP 2: NAVIGATION --- */
+/* --- STEP 2: NAVIGATION (STABILIZED) --- */
 nav {
   display: flex;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
+  /* Added these to ensure visibility */
+  background: canvas; 
+  position: relative;
 }
 
-nav ul, nav li { display: contents; }
+nav ul {
+  display: flex; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+nav li {
+  flex: 1;
+  display: flex;
+}
 
 nav a {
-  flex: 1; 
+  flex: 1;
   text-decoration: none;
-  color: inherit;
+  color: canvastext;
   text-align: center;
-  padding: 0.8em;
+  padding: 1em;
   font-weight: bold;
   border-bottom: 0.4em solid transparent;
   transition: all 0.2s ease-in-out;
 }
 
-nav a.current { border-bottom-color: var(--color-border-gray); }
+nav a.current {
+  border-bottom-color: var(--color-border-gray);
+}
 
 nav a:hover {
-  border-bottom-color: var(--color-accent); 
+  border-bottom-color: var(--color-accent);
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
+}
+
+/* --- THEME SWITCHER (FIXED POSITION) --- */
+.color-scheme {
+  position: fixed; /* Stays in the corner regardless of scrolling */
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.8rem;
+  z-index: 1000; /* Ensures it stays on top of headers */
+  background: canvas;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.color-scheme select {
+  font-family: inherit;
+  background: canvas;
+  color: canvastext;
+  border: 1px solid var(--border-color);
 }
 
 /* --- STEP 3: CONTACT FORM --- */
