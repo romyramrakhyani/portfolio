@@ -190,3 +190,37 @@ time {
     font-size: 2rem;
     font-weight: bold;
 }
+/* Stats Grid Styling */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin: 1rem 0 2rem 0;
+}
+
+.stats-grid dt {
+    grid-row: 1;
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: #0056b3;
+    text-transform: uppercase;
+}
+
+.stats-grid dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Ensure images don't explode in size */
+article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
