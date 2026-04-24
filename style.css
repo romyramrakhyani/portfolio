@@ -3,23 +3,19 @@ html {
   color-scheme: light dark;
 }
 
-/* Variables that adapt to the mode */
 :root {
   --color-accent: #0062cc; 
-  /* Use color-mix to make the accent background adapt to the system background */
   --color-accent-bg: color-mix(in oklch, var(--color-accent), canvas 85%);
   --color-border-gray: #bdc3c7;
   --border-color: oklch(50% 10% 200 / 40%);
 }
 
-/* --- STEP 1: GLOBAL LAYOUT & TYPOGRAPHY --- */
+/* --- STEP 1: GLOBAL LAYOUT --- */
 body {
   font: 100%/1.5 system-ui, sans-serif;
   max-width: 100ch; 
   margin-inline: max(1rem, (100% - 100ch) / 2);
   padding: 1rem;
-  
-  /* FIXED: Using system colors so text/bg flip automatically */
   color: canvastext;
   background-color: canvas;
 }
@@ -29,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   margin-bottom: 0.5rem;
   margin-top: 0;
-  color: inherit; /* Ensures headers stay visible */
+  color: inherit;
 }
 
 h1 { font-size: 300%; }
@@ -38,7 +34,6 @@ h1 { font-size: 300%; }
 nav {
   display: flex;
   margin-bottom: 2rem;
-  /* FIXED: Using the variable we defined for dark mode clarity */
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -78,7 +73,6 @@ form input, form textarea, form button, form select {
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* Ensures inputs look right in dark mode */
   background: canvas;
   color: canvastext;
 }
@@ -86,34 +80,94 @@ form input, form textarea, form button, form select {
 form button {
   grid-column: 1 / -1;
   background-color: var(--color-accent);
-  color: white; /* Button text stays white for contrast */
+  color: white;
   border: none;
   cursor: pointer;
   padding: 0.8em;
   font-weight: bold;
 }
 
-/* --- STEP 4: PROJECTS GRID --- */
+/* --- STEP 4: PROJECTS GRID (FIXED OVERLAP) --- */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 1.5em;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 2em;
+  margin-bottom: 3rem;
 }
 
 .projects article {
-  display: grid;
-  grid-template-rows: subgrid; 
-  grid-row: span 3;
-  gap: 0.5em;
-  padding: 1rem;
-  border: 1px solid var(--border-color); /* Updated for dark mode */
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* Stack vertically instead of fixed grid rows */
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: canvas;
 }
 
-.projects h2 { margin: 0; font-size: 1.25rem; }
-.projects img { width: 100%; height: auto; }
+.projects article h2 { 
+  margin: 0; 
+  font-size: 1.3rem; 
+  color: var(--color-accent);
+}
 
-/* --- STEP 5: CV/RESUME --- */
+.projects article img { 
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 6px;
+}
+
+/* Inner container for text content */
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex-grow: 1; /* Pushes content down */
+}
+
+.project-info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.project-year {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: color-mix(in oklch, canvastext, transparent 40%);
+  font-style: italic;
+  margin-top: auto; /* Aligns years at the bottom of the card */
+}
+
+/* --- STEP 5: GITHUB STATS --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+  background: var(--color-accent-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+.stats-grid dt {
+  grid-row: 1;
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.stats-grid dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* --- STEP 6: CV/RESUME --- */
 section h2 {
   border-bottom: 2px solid var(--color-accent);
   color: var(--color-accent);
@@ -126,17 +180,11 @@ section h2 {
 #experience article, #education article {
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 3px solid var(--border-color); /* Updated */
-  transition: border-color 0.3s;
-}
-
-#experience article:hover {
-  border-left-color: var(--color-accent);
+  border-left: 3px solid var(--border-color);
 }
 
 time {
   font-variant-numeric: tabular-nums;
-  /* Use a relative color so it doesn't vanish in dark mode */
   color: color-mix(in oklch, canvastext, transparent 40%);
   font-style: italic;
 }
@@ -164,63 +212,4 @@ time {
   top: 1rem;
   right: 1rem;
   font-size: 80%;
-}
-
-.color-scheme select {
-  font-family: inherit;
-  font-size: inherit;
-}
-#profile-stats dl {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-    text-align: center;
-    margin: 2rem 0;
-}
-
-#profile-stats dt {
-    grid-row: 1; /* Labels on Row 1 */
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-#profile-stats dd {
-    grid-row: 2; /* Numbers on Row 2 */
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-}
-/* Stats Grid Styling */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    text-align: center;
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    margin: 1rem 0 2rem 0;
-}
-
-.stats-grid dt {
-    grid-row: 1;
-    font-weight: bold;
-    font-size: 0.75rem;
-    color: #0056b3;
-    text-transform: uppercase;
-}
-
-.stats-grid dd {
-    grid-row: 2;
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-/* Ensure images don't explode in size */
-article img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
 }

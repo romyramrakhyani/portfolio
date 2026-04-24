@@ -11,32 +11,29 @@ export async function fetchJSON(url) {
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
     
-    // Check if we are currently inside the projects folder
+    // Detect if we are in the projects subfolder
     const isProjectsPage = window.location.pathname.includes('/projects/');
 
     projects.forEach(project => {
         let imagePath = project.image;
         
-        // If we're on the projects page, we need to go up one level to find the images folder
+        // Correct pathing for subfolders
         if (isProjectsPage && !imagePath.startsWith('http')) {
             imagePath = '../' + imagePath;
         }
 
         const article = document.createElement('article');
+        // We wrap the text in 'project-info' to keep it separate from the image
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
             <img src="${imagePath}" alt="${project.title}">
             <div class="project-info">
                 <p>${project.description}</p>
-                <p class="project-year"><em>Year: ${project.year}</em></p>
+                <p class="project-year">Year: ${project.year}</p>
             </div>
         `;
         containerElement.appendChild(article);
     });
-}
-
-export async function fetchGitHubData(username) {
-    return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
 export async function fetchGitHubData(username) {
