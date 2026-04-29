@@ -6,14 +6,23 @@
     <title>Projects - Romy Ramrakhyani</title>
     <link rel="stylesheet" href="../style.css">
     
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
     <script type="module" src="../global.js"></script>
     <script type="module" src="projects.js"></script>
 </head>
 <body>
+    <h1>Projects</h1>
 
-    <h1 class="projects-title">My Projects</h1>
+    <div id="projects-plot">
+        <div id="projects-pie"></div>
+        <ul class="legend"></ul>
+    </div>
 
-    <div class="projects"></div>
+    <input type="search" class="searchBar" placeholder="🔍 Search projects…" aria-label="Search projects">
+
+    <div class="projects">
+        </div>
 
 </body>
 </html>

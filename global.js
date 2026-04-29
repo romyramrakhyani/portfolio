@@ -7,18 +7,15 @@ let pages = [
     { url: 'https://github.com/romyramrakhyani', title: 'GitHub' },
 ];
 
-// 1. Create the <nav> and <ul> elements
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 let ul = document.createElement('ul');
 nav.append(ul);
 
-// 2. Loop through pages and create links
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    // Adjust URL for subpages (unless it's an external link)
     const ARE_WE_HOME = document.documentElement.classList.contains('home');
     if (!ARE_WE_HOME && !url.startsWith('http')) {
         url = '../' + url;
@@ -28,12 +25,10 @@ for (let p of pages) {
     a.href = url;
     a.textContent = title;
 
-    // Highlight the current page
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
     }
 
-    // Open external links in a new tab
     if (a.host !== location.host) {
         a.target = '_blank';
     }
@@ -49,7 +44,7 @@ document.body.insertAdjacentHTML(
     `
     <label class="color-scheme">
         Theme:
-        <select>
+        <select id="theme-switch">
             <option value="light dark">Automatic</option>
             <option value="light">Light</option>
             <option value="dark">Dark</option>
@@ -57,18 +52,23 @@ document.body.insertAdjacentHTML(
     </label>`
 );
 
-const select = document.querySelector('.color-scheme select');
+const select = document.querySelector('#theme-switch');
 
-// Save and load theme preference
-if (localStorage.colorScheme) {
-    document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
-    select.value = localStorage.colorScheme;
+function setColorScheme(colorScheme) {
+    document.documentElement.style.setProperty('color-scheme', colorScheme);
+    select.value = colorScheme;
+}
+
+if ("colorScheme" in localStorage) {
+    setColorScheme(localStorage.colorScheme);
 }
 
 select.addEventListener('input', function (event) {
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
+    setColorScheme(event.target.value);
     localStorage.colorScheme = event.target.value;
 });
+
+// --- CORE FUNCTIONS ---
 
 export async function fetchJSON(url) {
     try {
@@ -80,28 +80,31 @@ export async function fetchJSON(url) {
     }
 }
 
+/**
+ * UPDATED FOR LAB 5: Renders projects with specific "Year" styling
+ */
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
     
-    // Detect if we are in the projects subfolder
     const isProjectsPage = window.location.pathname.includes('/projects/');
 
     projects.forEach(project => {
         let imagePath = project.image;
         
-        // Correct pathing for subfolders
         if (isProjectsPage && !imagePath.startsWith('http')) {
             imagePath = '../' + imagePath;
         }
 
         const article = document.createElement('article');
-        // We wrap the text in 'project-info' to keep it separate from the image
+        
+        // Lab 5 Change: Added 'c.' and ensured text is wrapped to avoid overlap
+        // The CSS will handle the Baskerville font and oldstyle-nums
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
             <img src="${imagePath}" alt="${project.title}">
-            <div class="project-info">
+            <div class="project-details">
                 <p>${project.description}</p>
-                <p class="project-year">Year: ${project.year}</p>
+                <p class="project-year">c. ${project.year}</p>
             </div>
         `;
         containerElement.appendChild(article);
