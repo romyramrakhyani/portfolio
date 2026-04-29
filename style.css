@@ -293,3 +293,51 @@ time {
     list-style: none;
     padding: 0;
 }
+/* Container for Pie and Legend (Step 2.3) */
+#projects-plot {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-block: 2rem;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* Pie Chart Sizing */
+#projects-pie svg {
+    max-width: 20em;
+    overflow: visible; /* Prevents edges from getting cut off */
+}
+
+/* Legend Styling (Step 2.2) */
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1.5em;
+    flex: 1; /* Occupies remaining space */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* The Color Swatch */
+.swatch {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: var(--color);
+    border-radius: 4px; /* Slight rounding as suggested */
+    aspect-ratio: 1 / 1;
+}
+
+.legend-item em {
+    color: color-mix(in oklch, canvastext, transparent 50%);
+    font-size: 0.9em;
+}
