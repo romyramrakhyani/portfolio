@@ -1,92 +1,93 @@
 import { fetchJSON, renderProjects } from '../global.js';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-// 1. Load Projects Data
 const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
-// This selects your <h1>
 const projectsTitle = document.querySelector('.projects-title');
 
-// Initial render: show the list and the total count
-renderProjects(projects, projectsContainer, 'h2');
+// State variables
+let selectedIndex = -1;
+let query = '';
 
-// Set initial title (e.g., "12 Projects")
-if (projectsTitle) {
-    projectsTitle.textContent = `${projects.length} Projects`;
-}
-
-// --- REUSABLE PIE CHART FUNCTION ---
 function renderPieChart(projectsGiven) {
-    // Step 1: Re-calculate rolled data (Projects per Year)
     let newRolledData = d3.rollups(
         projectsGiven,
         (v) => v.length,
         (d) => d.year
     );
 
-    // Step 2: Convert to { value, label } format
     let newData = newRolledData.map(([year, count]) => {
         return { value: count, label: year };
     });
 
-    // Step 3: Setup Containers
     let container = d3.select('#projects-pie');
-    
-    // Clear the SVG and the Legend to prevent duplicates
     container.select('svg').remove(); 
-    let svg = container.append('svg')
-                       .attr('viewBox', '-50 -50 100 100');
+    let svg = container.append('svg').attr('viewBox', '-50 -50 100 100');
 
     let legend = d3.select('.legend');
     legend.selectAll('*').remove();
 
-    // Step 4: Setup Generators
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     let sliceGenerator = d3.pie().value((d) => d.value);
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
-
     let arcData = sliceGenerator(newData);
 
-    // Step 5: Draw Slices
+    // Draw Slices
     arcData.forEach((d, i) => {
         svg.append('path')
            .attr('d', arcGenerator(d))
            .attr('fill', colors(i))
-           .attr('class', 'wedge'); 
+           // Handle Selection Class
+           .attr('class', i === selectedIndex ? 'selected' : '')
+           .on('click', () => {
+                selectedIndex = selectedIndex === i ? -1 : i;
+                
+                // EXTRA CREDIT FIX: Apply both filters (Search + Year)
+                updateFilteredDisplay();
+           });
     });
 
-    // Step 6: Draw Legend
+    // Draw Legend
     newData.forEach((d, idx) => {
         legend.append('li')
               .attr('style', `--color:${colors(idx)}`)
-              .attr('class', 'legend-item')
+              .attr('class', idx === selectedIndex ? 'legend-item selected' : 'legend-item')
               .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
     });
 }
 
-// Initial call to display the chart on page load
-renderPieChart(projects);
-
-// --- SEARCH FUNCTIONALITY ---
-let searchInput = document.querySelector('.searchBar');
-
-searchInput.addEventListener('input', (event) => {
-    let query = event.target.value.toLowerCase();
-
-    // Filter projects based on query across all metadata
+// THE MASTER FILTER FUNCTION (Fixes Step 5.4 Bug)
+function updateFilteredDisplay() {
+    // 1. Filter by Search Query
     let filteredProjects = projects.filter((project) => {
         let values = Object.values(project).join('\n').toLowerCase();
-        return values.includes(query);
+        return values.includes(query.toLowerCase());
     });
 
-    // Update the title with the NEW count (e.g., "3 Projects")
-    if (projectsTitle) {
-        projectsTitle.textContent = `${filteredProjects.length} Projects`;
+    // 2. Filter by Selected Year (if any)
+    if (selectedIndex !== -1) {
+        // Re-calculate the years available in the currently searched set
+        let newRolledData = d3.rollups(filteredProjects, v => v.length, d => d.year);
+        let newData = newRolledData.map(([year, count]) => ({ value: count, label: year }));
+        let selectedYear = newData[selectedIndex].label;
+
+        filteredProjects = filteredProjects.filter(p => p.year === selectedYear);
     }
 
-    // Re-render project list
+    // 3. Render everything
     renderProjects(filteredProjects, projectsContainer, 'h2');
+    if (projectsTitle) projectsTitle.textContent = `${filteredProjects.length} Projects`;
     
-    // Re-render pie chart with the filtered data
+    // Update the pie chart (keeping wedges highlighted)
     renderPieChart(filteredProjects);
+}
+
+// Initial Call
+updateFilteredDisplay();
+
+// Search Listener
+let searchInput = document.querySelector('.searchBar');
+searchInput.addEventListener('input', (event) => {
+    query = event.target.value;
+    updateFilteredDisplay();
 });

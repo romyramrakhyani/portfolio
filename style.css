@@ -375,3 +375,26 @@ time {
   outline: 2px solid var(--color-accent);
   outline-offset: -1px;
 }
+/* Step 5.1 & 5.2 styling */
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+/* Dim all paths when the SVG is hovered, EXCEPT the one being hovered */
+#projects-pie svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+/* The selected state for wedges and legend items */
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+path.selected {
+  fill: var(--color);
+}
+
+li.selected {
+  font-weight: bold;
+}
