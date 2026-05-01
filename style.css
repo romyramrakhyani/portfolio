@@ -358,3 +358,20 @@ time {
     width: 100%;
     overflow: visible;
 }
+.searchBar {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: canvas;
+  color: canvastext;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Optional: Add a focus effect */
+.searchBar:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -1px;
+}
