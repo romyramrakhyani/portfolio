@@ -341,3 +341,20 @@ time {
     color: color-mix(in oklch, canvastext, transparent 50%);
     font-size: 0.9em;
 }
+#projects-plot {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+#projects-pie {
+    flex: 1;
+    max-width: 20em;
+}
+
+#projects-pie svg {
+    display: block;
+    width: 100%;
+    overflow: visible;
+}
