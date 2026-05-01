@@ -4,10 +4,13 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 // 1. Load Projects Data
 const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
+// This selects your <h1>
 const projectsTitle = document.querySelector('.projects-title');
 
 // Initial render: show the list and the total count
 renderProjects(projects, projectsContainer, 'h2');
+
+// Set initial title (e.g., "12 Projects")
 if (projectsTitle) {
     projectsTitle.textContent = `${projects.length} Projects`;
 }
@@ -29,7 +32,7 @@ function renderPieChart(projectsGiven) {
     // Step 3: Setup Containers
     let container = d3.select('#projects-pie');
     
-    // Clear the SVG and the Legend
+    // Clear the SVG and the Legend to prevent duplicates
     container.select('svg').remove(); 
     let svg = container.append('svg')
                        .attr('viewBox', '-50 -50 100 100');
@@ -76,7 +79,7 @@ searchInput.addEventListener('input', (event) => {
         return values.includes(query);
     });
 
-    // Update the title with the new count
+    // Update the title with the NEW count (e.g., "3 Projects")
     if (projectsTitle) {
         projectsTitle.textContent = `${filteredProjects.length} Projects`;
     }
