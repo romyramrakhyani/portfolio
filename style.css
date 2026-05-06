@@ -408,20 +408,28 @@ li.selected {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.stats dt {
-  grid-row-start: 1;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  font-weight: bold;
+.stats {
+  display: grid;
+  /* Change '150px' to '1fr' or 'max-content' to let the columns expand */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 1rem;
+  background: white; /* Or your background color */
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
+/* Ensure dd doesn't wrap its text */
 .stats dd {
   grid-row-start: 2;
   margin: 0;
   font-size: 2rem;
   font-weight: 300;
+  white-space: nowrap; /* This prevents the text from ever breaking into two lines */
 }
+
 .gridlines {
   color: #eee; /* Very light gray */
   stroke-width: 1px;
