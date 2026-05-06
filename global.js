@@ -5,6 +5,7 @@ let pages = [
     { url: 'contact/', title: 'Contact' },
     { url: 'resume/', title: 'Resume' },
     { url: 'https://github.com/romyramrakhyani', title: 'GitHub' },
+    { url: 'meta/', title: 'Meta' },
 ];
 
 let nav = document.createElement('nav');

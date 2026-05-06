@@ -398,3 +398,27 @@ path.selected {
 li.selected {
   font-weight: bold;
 }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  background: var(--color-background-soft);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stats dt {
+  grid-row-start: 1;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: bold;
+}
+
+.stats dd {
+  grid-row-start: 2;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 300;
+}
