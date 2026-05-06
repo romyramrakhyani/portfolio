@@ -422,3 +422,12 @@ li.selected {
   font-size: 2rem;
   font-weight: 300;
 }
+.gridlines {
+  color: #eee; /* Very light gray */
+  stroke-width: 1px;
+}
+
+/* Hide the outer "frame" lines of the grid axis */
+.gridlines .domain {
+  display: none;
+}
