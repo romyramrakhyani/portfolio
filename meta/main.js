@@ -153,4 +153,21 @@ function renderScatterPlot() {
     svg.append('g')
         .attr('transform', `translate(${usableArea.left}, 0)`)
         .call(yAxis);
+    
+    // 1. Create a scale for the radius
+    // This maps the number of lines (0 to max) to a circle radius (2px to 30px)
+    const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+    const rScale = d3.scaleSqrt() // Use scaleSqrt because area is perceived better than radius
+        .domain([minLines, maxLines])
+        .range([2, 30]);
+
+    // 2. Update your dots to use the scale
+    dots.selectAll('circle')
+        .data(commits)
+        .join('circle')
+        .attr('cx', (d) => xScale(d.datetime))
+        .attr('cy', (d) => yScale(d.hourFrac))
+        .attr('r', (d) => rScale(d.totalLines)) // Use the new scale here!
+        .attr('fill', 'steelblue')
+        .style('fill-opacity', 0.7);
 }
