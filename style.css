@@ -400,28 +400,29 @@ li.selected {
 }
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-  background: var(--color-background-soft);
-  padding: 1.5rem;
+  /* Use max-content to ensure "in the afternoon" has enough space */
+  grid-template-columns: repeat(auto-fill, minmax(max-content, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.stats {
-  display: grid;
-  /* Change min-width from 150px to something larger or use max-content */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+.stats dt {
+  grid-row: 1; /* Keep labels on the first row */
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
 }
 
 .stats dd {
-  grid-row-start: 2;
+  grid-row: 2; /* Keep values on the second row */
   margin: 0;
   font-size: 2rem;
   font-weight: 300;
-  /* Add this to prevent accidental wrapping */
+  /* Prevent text from ever wrapping */
   white-space: nowrap; 
 }
 
