@@ -478,3 +478,29 @@ circle:hover {
   fill: #ff6b6b;
   fill-opacity: 1 !important;
 }
+/* Step 5.3: Brushing Styles */
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+/* Step 5.4: Selected Dot Style */
+circle.selected {
+  fill: #ff6b6b; /* Change color to indicate selection */
+}
+
+/* Ensure language breakdown follows your stats grid */
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
