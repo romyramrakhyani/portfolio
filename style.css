@@ -399,32 +399,34 @@ li.selected {
   font-weight: bold;
 }
 /* Fix the stats box layout */
+/* Update your stats container */
 .stats {
   display: grid;
-  /* Use min-content for labels and max-content for values to prevent overlap */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-  gap: 1rem;
+  /* Use max-content to ensure "in the afternoon" has enough space */
+  grid-template-columns: repeat(auto-fill, minmax(max-content, 1fr));
+  gap: 1.5rem;
   margin-bottom: 2rem;
   background: white;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .stats dt {
-  grid-row: 1;
-  font-size: 0.7rem; /* Smaller labels look cleaner */
+  grid-row: 1; /* Labels stay on top row */
+  font-size: 0.8rem;
   color: #666;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .stats dd {
-  grid-row: 2;
+  grid-row: 2; /* Values stay on bottom row */
   margin: 0;
-  font-size: 1.5rem; /* Slightly smaller to fit better */
+  font-size: 2rem;
   font-weight: 300;
-  white-space: nowrap; /* Forces "in the afternoon" to stay on one line */
+  /* CRITICAL: Prevents "in the afternoon" from wrapping to a second line */
+  white-space: nowrap; 
 }
 
 /* Tooltip and Info List */
